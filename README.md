@@ -1,16 +1,55 @@
-# React + Vite
+## List of Breweries — React + Zustand + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Цей проєкт — тестове завдання. Додаток показує список пивоварень із публічного   
+API, підтримує мультивибір, видалення, перегляд однієї пивоварні та lazy scroll.
 
-Currently, two official plugins are available:
+### Технології
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React  
+- Zustand — управління станом  
+- React Router  
+- Vite  
+- Fetch API  
+- CSS (index.css)  
+  
+### Функціонал  
+  
+✅ 1. Отримання списку пивоварень  
+При першому завантаженні запитується page=1, 15 елементів.  
+Дані зберігаються в Zustand store.  
 
-## React Compiler
+✅ 2. Відображення 15 елементів  
+На екрані завжди рендериться рівно 15 пивоварень.
+  
+✅ 3. Lazy Scroll (15 елементів у рендері, 5 на екрані)  
+Видимо лише 5 елементів.  
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+✅ 4. Мультивибір (правий клік)  
+Користувач може вибрати одну або кілька пивоварень.  
+При виборі з’являється кнопка Delete.
+  
+✅ 5. Видалення вибраних  
+Видалені елементи прибираються, але загальна кількість у рендері лишається 15 (довантажуються інші).
+  
+✅ 6. Сторінка однієї пивоварні  
+Перехід при кліку лівою кнопкою на BreweryCard.  
+На сторінці показані:  
+- Назва    
+- Тип  
+- Адреса  
+- Телефон  
+- Лінк на сайт  
+  
+✅ 7. Loader
+Показується, коли даних ще немає.  
+  
+### API, яке використовується  
+  
+Список 15 пивоварень  
+https://api.openbrewerydb.org/v1/breweries?per_page=15&page=1  
+  
+Одна пивоварня за ID  
+https://api.openbrewerydb.org/v1/breweries/{id}    
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
